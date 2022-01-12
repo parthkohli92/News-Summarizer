@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Summarization</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/static/css/jquery-ui.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header style="background-color: #5F939A; height:120px;"
+        class="fixed inset-0 w-full flex flex-col justify-center justify-items-center content-center h-20 b-lg">
+        <img src="https://image.flaticon.com/icons/png/512/21/21601.png" alt="Logo"
+            class="object-contain w-16 self-center md:self-left md:w-30">
+        <div class="self-center text-black" >News On Tips</div>
+    </header>
+
+    <section style="background-color: #F3F4ED; padding-top:60px;" class="flex flex-wrap mt-20 w-full">
+        <div class="w-full md:w-1/2">
+            <form class="w-full flex flex-col md:h-screen" action="{{url_for('Summarize')}}" method="post">
+                <textarea class="w-11/12 md:h-3/4 m-2 p-2 lg border self-center justify-center"
+                    name="data" id="data" cols="30" rows="10" placeholder="Enter the news you want to summarize"
+                    required="required" style="height:480px;"></textarea>
+
+
+                <div class="flex self-center">
+                    <h3>Summary Length</h3>
+                    <input type="range" class="m-2" min="30" max="700" name="maxL">
+                </div>
+
+
+                <div class="flex self-center">
+                    <button class="m-1 bg-black hover:bg-blue-700 text-white font-semi-bold py-2 px-4 lg"
+                        type="submit" onclick="Check()">Submit</button>
+                    <button class="m-1 bg-black hover:bg-blue-700 text-white font-semi-bold py-2 px-4 lg"
+                        type="reset">Clear</button>
+                </div>
+            </form>
+        </div>
+        <div class="w-full md:w-1/2">
+            <div class="mt-2 flex flex-col w-full md:h-screen">
+                <textarea style="background-color: #white;"
+                    class="w-11/12 lg p-2 border self-center justify-center md:h-3/4" rows="10"
+                    cols="30" style="height:200px;" name="result" readonly placeholder="Your Summary">{{result
+                    }}</textarea>
+                <button
+                    class="m-2 bg-black hover:bg-blue-700 text-white font-semi-bold py-2 px-4 lg self-center"
+                    onclick="myFunction()">Copy text</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
